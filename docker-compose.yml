@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: blood_donation_db
+    environment:
+      MYSQL_DATABASE: blood_donation
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Teja@1234
+      MYSQL_ROOT_PASSWORD: Teja@1234
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: .
+    container_name: blood_donation_backend
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/blood_donation?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Teja@1234
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SERVER_PORT: 8081
+      APP_JWT_SECRET: mysupersecuresecretkeymysupersecuresecretkeymysupersecuresecretkeymysuper
+      APP_JWT_EXPIRATION: 86400000
+    depends_on:
+      - db
+
+volumes:
+  db_data:
