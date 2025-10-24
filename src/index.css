@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BloodCare Design System - Medical & Healthcare Theme */
+
+@layer base {
+  :root {
+    /* Background & Foreground */
+    --background: 0 0% 100%;
+    --background-secondary: 220 15% 97%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* Primary Colors */
+    --primary: 0 84% 60%;
+    --primary-dark: 0 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary / Medical Blue */
+    --medical-blue: 210 75% 50%;
+    --medical-blue-light: 210 60% 85%;
+
+    /* Border & Input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+
+    /* Shadows */
+    --shadow-medical: 0 10px 30px -10px hsl(0 84% 60% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
+    --shadow-notification: 0 8px 25px -8px hsl(0 84% 60% / 0.15);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --background-secondary: 220 15% 8%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --primary: 0 84% 60%;
+    --primary-dark: 0 85% 45%;
+    --primary-foreground: 0 0% 100%;
+    --medical-blue: 210 75% 50%;
+    --medical-blue-light: 210 60% 25%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+  }
+
+  /* Apply defaults */
+  * {
+    @apply border-[hsl(var(--border))];
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-inter antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-medical-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+    color: hsl(var(--primary-foreground));
+    @apply font-semibold px-6 py-3 rounded-xl shadow-medical transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+
+  .btn-medical-secondary {
+    background: linear-gradient(135deg, hsl(var(--medical-blue)) 0%, hsl(var(--medical-blue-light)) 100%);
+    color: white;
+    @apply font-semibold px-6 py-3 rounded-xl shadow-card transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+
+  .btn-ghost-medical {
+    @apply border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] bg-transparent font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))];
+  }
+
+  /* Cards */
+  .card-medical {
+    @apply bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl shadow-card hover:shadow-medical transition-all duration-300 p-6;
+  }
+
+  .card-stat {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 50%, hsl(var(--medical-blue-light)) 100%);
+    @apply border border-[hsl(var(--border))] rounded-xl p-4 hover:scale-105 transition-all duration-300;
+  }
+
+  /* Hero Background */
+  .hero-medical {
+    background: linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--background-secondary)), hsl(var(--medical-blue-light)));
+  }
+
+  /* Notifications */
+  .notification-badge {
+    @apply absolute -top-1 -right-1 text-xs font-bold rounded-full min-w-[1.25rem] h-5 flex items-center justify-center shadow-notification;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Forms */
+  .input-medical {
+    @apply border-2 border-[hsl(var(--input))] focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary)/20)] rounded-xl px-4 py-3 transition-all duration-200;
+  }
+
+  /* Icons */
+  .icon-medical {
+    @apply w-6 h-6 text-[hsl(var(--primary))];
+  }
+
+  .icon-medical-lg {
+    @apply w-8 h-8 text-[hsl(var(--primary))];
+  }
+
+  /* Animations */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+/* Animations Keyframes */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
