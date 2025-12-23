@@ -57,7 +57,7 @@ const Home = () => {
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                   Donate Blood,{' '}
-                  <span className="bg-gradient-primary bg-clip-text text-transparent">
+                  <span className="bg-gradient-primary">
                     Save Lives
                   </span>
                 </h1>
