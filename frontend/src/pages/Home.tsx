@@ -35,14 +35,14 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden hero-medical py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative overflow-hidden hero-medical py-12 sm:py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               <div className="space-y-4">
                 <motion.div
@@ -55,14 +55,14 @@ const Home = () => {
                   <span>Saving Lives Together</span>
                 </motion.div>
                 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                   Donate Blood,{' '}
                   <span className="bg-gradient-primary">
                     Save Lives
                   </span>
                 </h1>
                 
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                   Join our community of heroes and help those in need. Every donation can save up to three lives. 
                   Your contribution makes a difference in someone's world.
                 </p>
@@ -72,19 +72,19 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
               >
                 <Link to="/register">
-                  <Button className="btn-medical-primary group px-8 py-4 text-lg">
-                    <FiHeart className="w-5 h-5 mr-2" />
+                  <Button className="btn-medical-primary group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto">
+                    <FiHeart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Become a Donor
-                    <FiArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <FiArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 
                 <Link to="/requests">
-                  <Button className="btn-medical-secondary px-8 py-4 text-lg">
-                    <FiActivity className="w-5 h-5 mr-2" />
+                  <Button className="btn-medical-secondary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto">
+                    <FiActivity className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                     Find Blood
                   </Button>
                 </Link>
@@ -118,7 +118,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -131,11 +131,11 @@ const Home = () => {
               >
                 <div className="flex justify-center">
                   <div className="card-stat">
-                    <stat.icon className={`w-10 h-10 mx-auto ${stat.color}`} />
+                    <stat.icon className={`w-8 h-8 sm:w-10 sm:h-10 mx-auto ${stat.color}`} />
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-foreground">{stat.value}</div>
-                <div className="text-muted-foreground font-medium">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-sm sm:text-base text-muted-foreground font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -149,17 +149,17 @@ const Home = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center space-y-4 mb-16"
+            className="text-center space-y-4 mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
               Why Choose BloodCare?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               We provide a secure, efficient, and compassionate platform for blood donation management
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -168,16 +168,16 @@ const Home = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <Card className="card-medical text-center space-y-4 h-full">
+                <Card className="card-medical text-center space-y-4 h-full p-4 sm:p-6">
                   <div className="flex justify-center">
                     <img
                       src={feature.image}
                       alt={feature.title}
-                      className="w-24 h-24 object-contain rounded-2xl shadow-md hover:scale-105 transition-transform"
+                      className="w-16 h-16 sm:w-20 sm:w-20 lg:w-24 lg:h-24 object-contain rounded-2xl shadow-md hover:scale-105 transition-transform"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">{feature.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold text-foreground">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
                 </Card>
               </motion.div>
             ))}

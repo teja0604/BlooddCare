@@ -47,20 +47,29 @@ const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
 
   return (
     <motion.aside
-      animate={{ width: isOpen ? 256 : 64 }}
+      animate={{
+        width: isOpen ? 256 : 64,
+        x: 0 // Ensure it's always visible on mobile when open
+      }}
       transition={{ duration: 0.3 }}
-      className="h-screen bg-card border-r border-border shadow-lg flex flex-col justify-between fixed top-0 left-0 z-50 transition-all"
+      className={`h-screen bg-card border-r border-border shadow-lg flex flex-col justify-between fixed top-0 left-0 z-50 transition-all md:relative md:z-auto ${
+        isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      }`}
     >
       {/* Top Section - Logo + Toggle */}
       <div className="flex items-center justify-between p-4">
         {isOpen && (
           <span className="flex items-center space-x-2">
-            <FiHeart className="w-8 h-8 text-primary animate-pulse-soft" />
-            <span className="text-2xl font-bold text-red-600">BloodCare</span>
+            <FiHeart className="w-6 h-6 sm:w-8 sm:h-8 text-primary animate-pulse-soft" />
+            <span className="text-xl sm:text-2xl font-bold text-red-600">BloodCare</span>
           </span>
         )}
-        <button onClick={toggleSidebar}>
-          <FiMenu className="w-6 h-6 text-muted-foreground" />
+        <button
+          onClick={toggleSidebar}
+          className="p-2 hover:bg-accent rounded-md transition-colors"
+          aria-label="Toggle sidebar"
+        >
+          <FiMenu className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
         </button>
       </div>
 

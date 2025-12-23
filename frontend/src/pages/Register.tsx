@@ -68,12 +68,12 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle py-12 px-4">
+    <div className="min-h-screen bg-gradient-subtle py-8 sm:py-12 px-4">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
         >
           {/* Header */}
           <div className="text-center space-y-4">
@@ -99,7 +99,7 @@ const Register = () => {
           {/* Registration Form */}
           <Card className="card-medical">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Name */}
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-foreground font-medium">Full Name</Label>

@@ -51,11 +51,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-gradient-subtle flex items-center justify-center px-4 py-8 sm:py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md space-y-8"
+        className="w-full max-w-md space-y-6 sm:space-y-8"
       >
         {/* Header */}
         <div className="text-center space-y-4">
@@ -65,13 +65,13 @@ const Login = () => {
             transition={{ delay: 0.2 }}
             className="flex justify-center"
           >
-            <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center">
-              <FiHeart className="w-8 h-8 text-white animate-pulse-soft" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-primary rounded-2xl flex items-center justify-center">
+              <FiHeart className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-pulse-soft" />
             </div>
           </motion.div>
           <div>
-            <h2 className="text-3xl font-bold text-foreground">Welcome Back</h2>
-            <p className="text-muted-foreground mt-2">Sign in to your BloodCare account</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Welcome Back</h2>
+            <p className="text-sm sm:text-base text-muted-foreground mt-2">Sign in to your BloodCare account</p>
           </div>
         </div>
 

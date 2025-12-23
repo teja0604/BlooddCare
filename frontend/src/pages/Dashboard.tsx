@@ -107,10 +107,10 @@ export default function Dashboard() {
     >
       {/* Header */}
       <motion.div variants={fadeInUp} className="space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
           Welcome back to BloodCare
         </h1>
-        <p className="text-gray-600">
+        <p className="text-sm sm:text-base text-gray-600">
           Your healthcare dashboard - manage donations, medications, and appointments
         </p>
       </motion.div>
@@ -118,7 +118,7 @@ export default function Dashboard() {
       {/* Stats Grid */}
       <motion.div 
         variants={fadeInUp}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
       >
         {stats.map((stat, index) => (
           <motion.div
@@ -128,18 +128,18 @@ export default function Dashboard() {
             whileTap="tap"
           >
             <Card className="glass-effect shadow-healthcare border-0">
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">{stat.title}</p>
+                    <p className="text-xl sm:text-2xl font-bold text-gray-900">{stat.value}</p>
                     <div className="flex items-center mt-1">
-                      <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
-                      <span className="text-sm text-green-500">{stat.change}</span>
+                      <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-1 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm text-green-500">{stat.change}</span>
                     </div>
                   </div>
-                  <div className={`p-3 rounded-2xl ${stat.bgColor}`}>
-                    <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                  <div className={`p-2 sm:p-3 rounded-2xl ${stat.bgColor} flex-shrink-0 ml-2`}>
+                    <stat.icon className={`h-4 w-4 sm:h-6 sm:w-6 ${stat.color}`} />
                   </div>
                 </div>
               </CardContent>
@@ -148,7 +148,7 @@ export default function Dashboard() {
         ))}
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
         {/* Urgent Blood Requests */}
         <motion.div variants={fadeInUp}>
           <Card className="glass-effect shadow-healthcare border-0">
@@ -165,35 +165,36 @@ export default function Dashboard() {
               {urgentRequests.map((request) => (
                 <div
                   key={request.id}
-                  className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-white/20"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 bg-white/50 rounded-xl border border-white/20 gap-3 sm:gap-0"
                 >
-                  <div className="space-y-1">
-                    <div className="flex items-center space-x-2">
-                      <Badge 
-                        variant="outline" 
-                        className="bg-red-50 text-red-700 border-red-200"
+                  <div className="space-y-1 flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Badge
+                        variant="outline"
+                        className="bg-red-50 text-red-700 border-red-200 text-xs"
                       >
                         {request.bloodType}
                       </Badge>
-                      <Badge 
+                      <Badge
                         variant={request.urgency === 'Critical' ? 'destructive' : 'secondary'}
+                        className="text-xs"
                       >
                         {request.urgency}
                       </Badge>
                     </div>
-                    <p className="font-medium text-gray-900">{request.hospital}</p>
-                    <div className="flex items-center text-sm text-gray-500 space-x-4">
+                    <p className="font-medium text-gray-900 text-sm sm:text-base truncate">{request.hospital}</p>
+                    <div className="flex flex-wrap items-center text-xs sm:text-sm text-gray-500 gap-2 sm:gap-4">
                       <span className="flex items-center">
-                        <Clock className="h-4 w-4 mr-1" />
+                        <Clock className="h-3 w-3 sm:h-4 sm:w-4 mr-1 flex-shrink-0" />
                         {request.time}
                       </span>
                       <span className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        {request.location}
+                        <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1 flex-shrink-0" />
+                        <span className="truncate">{request.location}</span>
                       </span>
                     </div>
                   </div>
-                  <Button size="sm" className="bg-[#E63946] hover:bg-[#E63946]/90">
+                  <Button size="sm" className="bg-[#E63946] hover:bg-[#E63946]/90 w-full sm:w-auto">
                     Respond
                   </Button>
                 </div>
@@ -252,34 +253,34 @@ export default function Dashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Button 
-                variant="outline" 
-                className="h-20 flex-col space-y-2 hover:scale-105 transition-transform"
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+              <Button
+                variant="outline"
+                className="h-16 sm:h-20 flex-col space-y-1 sm:space-y-2 hover:scale-105 transition-transform p-2 sm:p-4"
               >
-                <Heart className="h-6 w-6 text-red-500" />
-                <span className="text-sm">Donate Blood</span>
+                <Heart className="h-4 w-4 sm:h-6 sm:w-6 text-red-500" />
+                <span className="text-xs sm:text-sm">Donate Blood</span>
               </Button>
-              <Button 
-                variant="outline" 
-                className="h-20 flex-col space-y-2 hover:scale-105 transition-transform"
+              <Button
+                variant="outline"
+                className="h-16 sm:h-20 flex-col space-y-1 sm:space-y-2 hover:scale-105 transition-transform p-2 sm:p-4"
               >
-                <Pill className="h-6 w-6 text-green-500" />
-                <span className="text-sm">Order Medicine</span>
+                <Pill className="h-4 w-4 sm:h-6 sm:w-6 text-green-500" />
+                <span className="text-xs sm:text-sm">Order Medicine</span>
               </Button>
-              <Button 
-                variant="outline" 
-                className="h-20 flex-col space-y-2 hover:scale-105 transition-transform"
+              <Button
+                variant="outline"
+                className="h-16 sm:h-20 flex-col space-y-1 sm:space-y-2 hover:scale-105 transition-transform p-2 sm:p-4"
               >
-                <Calendar className="h-6 w-6 text-blue-500" />
-                <span className="text-sm">Book Test</span>
+                <Calendar className="h-4 w-4 sm:h-6 sm:w-6 text-blue-500" />
+                <span className="text-xs sm:text-sm">Book Test</span>
               </Button>
-              <Button 
-                variant="outline" 
-                className="h-20 flex-col space-y-2 hover:scale-105 transition-transform bg-red-50 border-red-200 hover:bg-red-100"
+              <Button
+                variant="outline"
+                className="h-16 sm:h-20 flex-col space-y-1 sm:space-y-2 hover:scale-105 transition-transform bg-red-50 border-red-200 hover:bg-red-100 p-2 sm:p-4"
               >
-                <AlertCircle className="h-6 w-6 text-red-600" />
-                <span className="text-sm font-medium">Emergency</span>
+                <AlertCircle className="h-4 w-4 sm:h-6 sm:w-6 text-red-600" />
+                <span className="text-xs sm:text-sm font-medium">Emergency</span>
               </Button>
             </div>
           </CardContent>
