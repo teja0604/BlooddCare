@@ -22,6 +22,10 @@
     --primary-dark: 0 85% 45%;
     --primary-foreground: 0 0% 100%;
 
+    /* Accent */
+    --accent: 220 15% 97%;
+    --accent-foreground: 222.2 84% 4.9%;
+
     /* Secondary / Medical Blue */
     --medical-blue: 210 75% 50%;
     --medical-blue-light: 210 60% 85%;
@@ -51,6 +55,8 @@
     --primary: 0 84% 60%;
     --primary-dark: 0 85% 45%;
     --primary-foreground: 0 0% 100%;
+    --accent: 220 15% 97%;
+    --accent-foreground: 222.2 84% 4.9%;
     --medical-blue: 210 75% 50%;
     --medical-blue-light: 210 60% 25%;
     --border: 217.2 32.6% 17.5%;
