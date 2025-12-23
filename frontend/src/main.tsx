@@ -9,7 +9,7 @@ import App from './App';
 
 // ✅ CSS import
 import './index.css'; // old CSS
-import './indexD.css'; // new CSS if you want both
+import './index.css'; // new CSS if you want both
 
 // ✅ Render the root
 const container = document.getElementById('root');
