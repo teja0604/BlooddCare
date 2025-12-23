@@ -16,7 +16,7 @@ services:
       - db_data:/var/lib/mysql
 
   backend:
-    build: .
+    build: ./backend
     container_name: blood_donation_backend
     ports:
       - "8081:8081"
