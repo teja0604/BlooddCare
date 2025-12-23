@@ -2,70 +2,59 @@
 import { Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/Sidebar";
+import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
 
 const AppLayout = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
 
-  // Handle responsive sidebar
   useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768; // md breakpoint
+    const checkDevice = () => {
+      const width = window.innerWidth;
+      const mobile = width < 768;
+      const phone = width < 640;
+
       setIsMobile(mobile);
-      if (mobile) {
-        setSidebarOpen(false); // Close sidebar on mobile by default
-      } else {
-        setSidebarOpen(true); // Open sidebar on desktop by default
-      }
+      setIsPhone(phone);
+      setSidebarOpen(!mobile);
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-subtle flex">
+    <div className="min-h-screen flex bg-background relative">
       {/* Sidebar */}
       <Sidebar
         isOpen={isSidebarOpen}
         toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
+        isPhone={isPhone}
       />
 
       {/* Mobile Overlay */}
       {isMobile && isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      {/* Main content + footer wrapper */}
+      {/* Main Content */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${
-          isMobile
-            ? 'ml-0'
-            : isSidebarOpen
-              ? "lg:ml-64 xl:ml-64"
-              : "lg:ml-16 xl:ml-16"
+        className={`flex-1 flex flex-col transition-all duration-300 ${
+          isMobile ? "" : isSidebarOpen ? "ml-64" : "ml-16"
         }`}
       >
-        {/* Main Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+        <main className={`flex-1 ${isPhone ? "p-3" : "p-4 sm:p-6 lg:p-8"}`}>
           <Outlet />
         </main>
 
-        {/* Footer */}
-        <footer className="bg-card border-t border-border p-4 text-center text-muted-foreground text-sm">
-          <div className="max-w-7xl mx-auto">
-            <p>© 2025 BloodCare. All rights reserved.</p>
-            <p className="mt-1 text-xs">Saving lives through blood donation</p>
-          </div>
-        </footer>
+        {/* ✅ SINGLE FOOTER */}
+        <Footer />
       </motion.div>
     </div>
   );

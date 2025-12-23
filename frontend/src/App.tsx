@@ -8,7 +8,6 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 
 import AppLayout from "./layouts/AppLayout";
-import Footer from "./components/Footer";
 
 // --- your pages ---
 import Home from "./pages/Home";
@@ -128,7 +127,6 @@ const App = () => (
               <div className="flex-grow">
                 <AppRoutes />
               </div>
-              <Footer />
               <Toaster />
               <Sonner />
             </div>

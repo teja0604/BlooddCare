@@ -173,7 +173,7 @@ const Home = () => {
                     <img
                       src={feature.image}
                       alt={feature.title}
-                      className="w-16 h-16 sm:w-20 sm:w-20 lg:w-24 lg:h-24 object-contain rounded-2xl shadow-md hover:scale-105 transition-transform"
+                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain rounded-2xl shadow-md hover:scale-105 transition-transform"
                     />
                   </div>
                   <h3 className="text-lg sm:text-xl font-semibold text-foreground">{feature.title}</h3>
