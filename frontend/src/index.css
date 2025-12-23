@@ -110,6 +110,11 @@
     background: linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--background-secondary)), hsl(var(--medical-blue-light)));
   }
 
+  /* Gradient Text */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  }
+
   /* Notifications */
   .notification-badge {
     @apply absolute -top-1 -right-1 text-xs font-bold rounded-full min-w-[1.25rem] h-5 flex items-center justify-center shadow-notification;
