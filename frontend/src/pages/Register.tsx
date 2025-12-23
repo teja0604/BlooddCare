@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label';
 import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -43,7 +45,7 @@ const Register = () => {
       };
 
       // ✅ FIX: Use backend on port 8081
-      const response = await fetch("http://localhost:8081/api/auth/register", {
+      const response = await fetch(`${API_BASE}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

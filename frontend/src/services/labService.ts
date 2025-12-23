@@ -1,7 +1,8 @@
 // src/services/labService.ts
 import axios from "axios";
 
-const API_URL = "http://localhost:8081/api/lab";
+const API_BASE = import.meta.env.VITE_API_BASE;
+const API_URL = `${API_BASE}/lab`;
 
 // ✅ Test Packages
 export const getPackages = async () => {

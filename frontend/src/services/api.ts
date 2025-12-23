@@ -28,10 +28,10 @@ import {
 // ========================
 // CONFIG
 // ========================
-const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8081/api";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: API_BASE,
   headers: { "Content-Type": "application/json" },
 });
 
