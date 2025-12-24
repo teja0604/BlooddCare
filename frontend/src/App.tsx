@@ -7,6 +7,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 
+console.log("App.tsx loaded");
+
 import AppLayout from "./layouts/AppLayout";
 
 // --- your pages ---
@@ -119,20 +121,18 @@ const AppRoutes = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <BrowserRouter>
-        {/* ✅ AuthProvider must wrap AppRoutes */}
-        <AuthProvider>
-          <CartProvider>
-            <div className="min-h-screen bg-background font-inter antialiased flex flex-col">
-              <div className="flex-grow">
-                <AppRoutes />
-              </div>
-              <Toaster />
-              <Sonner />
+      {/* ✅ AuthProvider must wrap AppRoutes */}
+      <AuthProvider>
+        <CartProvider>
+          <div className="min-h-screen bg-background font-inter antialiased flex flex-col">
+            <div className="flex-grow">
+              <AppRoutes />
             </div>
-          </CartProvider>
-        </AuthProvider>
-      </BrowserRouter>
+            <Toaster />
+            <Sonner />
+          </div>
+        </CartProvider>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

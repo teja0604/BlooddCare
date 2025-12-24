@@ -34,7 +34,7 @@ const Requests = () => {
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      const res = await api.get('/donors/requests', {
+      const res = await api.get('/requests', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRequests(res.data);
@@ -74,7 +74,7 @@ const Requests = () => {
     if (!userId) return alert('Please login to donate.');
     try {
       setActionLoading(id);
-      await api.post(`/donors/requests/${id}/accept`, { donorId: userId }, {
+      await api.post(`/requests/${id}/accept`, { donorId: userId }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // remove accepted request from UI

@@ -1,19 +1,16 @@
 // src/services/labService.ts
-import axios from "axios";
-
-const API_BASE = import.meta.env.VITE_API_BASE;
-const API_URL = `${API_BASE}/lab`;
+import api from "./api";
 
 // ✅ Test Packages
 export const getPackages = async () => {
-  const res = await axios.get(`${API_URL}/tests`);
+  const res = await api.get("/lab/tests");
   return res.data; // return only data
 };
 
 export const bookPackage = async (id: number) => {
-  // You don’t actually have a backend “bookPackage” endpoint.
-  // So we’ll just call appointments API
-  const res = await axios.post(`${API_URL}/appointments`, {
+  // You don't actually have a backend "bookPackage" endpoint.
+  // So we'll just call appointments API
+  const res = await api.post("/lab/appointments", {
     testId: id,
     date: new Date().toISOString().split("T")[0],
     time: "09:00 AM",
@@ -23,12 +20,12 @@ export const bookPackage = async (id: number) => {
 
 // ✅ Lab Results
 export const getResults = async () => {
-  const res = await axios.get(`${API_URL}/results`);
+  const res = await api.get("/lab/results");
   return res.data;
 };
 
 export const downloadResult = async (id: number) => {
-  const res = await axios.get(`${API_URL}/results/${id}`, {
+  const res = await api.get(`/lab/results/${id}`, {
     responseType: "blob",
   });
   return res.data;
@@ -36,17 +33,17 @@ export const downloadResult = async (id: number) => {
 
 // ✅ Appointments
 export const getAppointments = async () => {
-  const res = await axios.get(`${API_URL}/appointments`);
+  const res = await api.get("/lab/appointments");
   return res.data;
 };
 
 export const scheduleAppointment = async (appt: any) => {
-  const res = await axios.post(`${API_URL}/appointments`, appt);
+  const res = await api.post("/lab/appointments", appt);
   return res.data;
 };
 
 export const rescheduleAppointment = async (id: number, appt: any) => {
-  const res = await axios.put(`${API_URL}/appointments`, {
+  const res = await api.put("/lab/appointments", {
     id,
     ...appt,
   });
@@ -54,7 +51,7 @@ export const rescheduleAppointment = async (id: number, appt: any) => {
 };
 
 export const getAppointmentDetails = async (id: number) => {
-  const res = await axios.get(`${API_URL}/appointments`);
+  const res = await api.get("/lab/appointments");
   return res.data.find((a: any) => a.id === id);
 };
 
