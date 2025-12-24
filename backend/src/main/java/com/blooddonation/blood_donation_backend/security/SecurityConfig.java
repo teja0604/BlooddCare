@@ -52,6 +52,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/api/auth/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .requestMatchers("/api/pharmacy/**").permitAll()
+                .requestMatchers("/api/lab/tests").permitAll()
+                .requestMatchers("/api/requests").permitAll()
                 .anyRequest().authenticated()
             )
             .authenticationProvider(daoAuthenticationProvider())
