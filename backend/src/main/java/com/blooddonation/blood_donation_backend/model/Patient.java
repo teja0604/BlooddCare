@@ -51,6 +51,9 @@ public class Patient {
     @Column(name = "emergency_contact", nullable = false)
     private String emergencyContact;
     
+    @Column(name = "aadhaar_number")
+    private String aadhaarNumber;
+    
     /**
      * Encrypted fingerprint template - stored as Base64 encoded string
      * This contains the processed fingerprint data, not the raw image
@@ -97,6 +100,9 @@ public class Patient {
     
     public String getEmergencyContact() { return emergencyContact; }
     public void setEmergencyContact(String emergencyContact) { this.emergencyContact = emergencyContact; }
+    
+    public String getAadhaarNumber() { return aadhaarNumber; }
+    public void setAadhaarNumber(String aadhaarNumber) { this.aadhaarNumber = aadhaarNumber; }
     
     public String getFingerprintTemplate() { return fingerprintTemplate; }
     public void setFingerprintTemplate(String fingerprintTemplate) { this.fingerprintTemplate = fingerprintTemplate; }
